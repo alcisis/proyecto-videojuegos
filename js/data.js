@@ -1,15 +1,35 @@
-// Array de juegos
-export const games = [
-    { id: 1, name: "The Witcher 3", genre: "RPG", score: 9.7 },
-    { id: 2, name: "Cyberpunk 2077", genre: "RPG", score: 7.2 },
-    { id: 3, name: "Doom Eternal", genre: "FPS", score: 8.5 }
+const videojuegos = [
+    { id: 1, nombre: "The Legend of Zelda: Breath of the Wild", genero: "Aventura", año: 2017, puntuacion: 9.7 },
+    { id: 2, nombre: "Red Dead Redemption 2", genero: "Aventura", año: 2018, puntuacion: 9.8 },
+    { id: 3, nombre: "The Witcher 3: Wild Hunt", genero: "RPG", año: 2015, puntuacion: 9.8 },
+    { id: 4, nombre: "Minecraft", genero: "Sandbox", año: 2011, puntuacion: 9.0 },
+    { id: 5, nombre: "Grand Theft Auto V", genero: "Acción", año: 2013, puntuacion: 9.5 },
+    { id: 6, nombre: "Dark Souls III", genero: "RPG", año: 2016, puntuacion: 9.3 },
+    { id: 7, nombre: "Super Mario Odyssey", genero: "Plataformas", año: 2017, puntuacion: 9.6 },
+    { id: 8, nombre: "God of War (2018)", genero: "Aventura", año: 2018, puntuacion: 9.5 },
+    { id: 9, nombre: "Cyberpunk 2077", genero: "RPG", año: 2020, puntuacion: 7.2 },
+    { id: 10, nombre: "Elden Ring", genero: "RPG", año: 2022, puntuacion: 9.7 },
+    { id: 11, nombre: "The Last of Us Part II", genero: "Aventura", año: 2020, puntuacion: 9.0 },
+    { id: 12, nombre: "Hades", genero: "Roguelike", año: 2020, puntuacion: 9.4 },
+    { id: 13, nombre: "Animal Crossing: New Horizons", genero: "Simulación", año: 2020, puntuacion: 8.5 },
+    { id: 14, nombre: "Doom Eternal", genero: "FPS", año: 2020, puntuacion: 9.0 },
+    { id: 15, nombre: "Among Us", genero: "Multijugador", año: 2018, puntuacion: 7.5 },
+    { id: 16, nombre: "Fallout 4", genero: "RPG", año: 2015, puntuacion: 8.5 },
+    { id: 17, nombre: "Overwatch", genero: "FPS", año: 2016, puntuacion: 9.0 },
+    { id: 18, nombre: "Horizon Zero Dawn", genero: "Aventura", año: 2017, puntuacion: 9.0 },
+    { id: 19, nombre: "Stardew Valley", genero: "Simulación", año: 2016, puntuacion: 9.0 },
+    { id: 20, nombre: "Portal 2", genero: "Puzzle", año: 2011, puntuacion: 9.5 },
+    { id: 21, nombre: "The Elder Scrolls V: Skyrim", genero: "RPG", año: 2011, puntuacion: 9.5 },
+    { id: 22, nombre: "Celeste", genero: "Plataformas", año: 2018, puntuacion: 9.3 },
+    { id: 23, nombre: "Sekiro: Shadows Die Twice", genero: "Acción", año: 2019, puntuacion: 9.3 },
+    { id: 24, nombre: "Persona 5", genero: "RPG", año: 2016, puntuacion: 9.2 },
+    { id: 25, nombre: "Half-Life: Alyx", genero: "VR", año: 2020, puntuacion: 9.2 },
+    { id: 26, nombre: "Death Stranding", genero: "Aventura", año: 2019, puntuacion: 8.5 },
+    { id: 27, nombre: "Resident Evil Village", genero: "Survival Horror", año: 2021, puntuacion: 8.8 },
+    { id: 28, nombre: "Metroid Dread", genero: "Metroidvania", año: 2021, puntuacion: 9.0 },
+    { id: 29, nombre: "It Takes Two", genero: "Cooperativo", año: 2021, puntuacion: 9.0 },
+    { id: 30, nombre: "Halo Infinite", genero: "FPS", año: 2021, puntuacion: 8.5 }
 ];
 
-// Árbol de géneros
-export const genresTree = {
-    name: "Géneros",
-    children: [
-        { name: "RPG", children: [] },
-        { name: "FPS", children: [] }
-    ]
-};
+// Opcional: Exportar para usar en app.js (si usas módulos)
+// export default videojuegos;

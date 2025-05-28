@@ -1,3 +1,333 @@
-body { font-family: Arial, sans-serif; margin: 20px; }
-.game-card { border: 1px solid #ddd; padding: 10px; margin: 10px; }
-button { margin-right: 10px; padding: 5px 10px; }
+:root {
+    --primary: #6c5ce7;
+    --dark: #2d3436;
+    --light: #f5f6fa;
+    --accent: #00cec9;
+    --card-bg: #1e272e;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #0f0f1a;
+    color: var(--light);
+    line-height: 1.6;
+    transition: background 0.3s, color 0.3s;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.header {
+    background: linear-gradient(135deg, var(--primary), #a29bfe);
+    color: white;
+    text-align: center;
+    padding: 2rem 0;
+    margin-bottom: 2rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.header i {
+    margin-right: 10px;
+}
+
+.filtros {
+    background-color: rgba(30, 39, 46, 0.8);
+    -webkit-backdrop-filter: blur(10px); /* Prefijo para Safari */
+    backdrop-filter: blur(10px); /* Estándar para otros navegadores */
+    padding: 1.5rem 0;
+    border-radius: 10px;
+    margin-bottom: 2rem;
+}
+
+.search-box {
+    position: relative;
+    margin-bottom: 1rem;
+    width: 100%;
+}
+
+.search-box input {
+    width: 100%;
+    padding: 12px 20px 12px 40px;
+    border-radius: 50px;
+    border: none;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: rgb(255, 255, 255);
+    font-size: 1rem;
+    outline: none;
+    transition: all 0.3s;
+}
+
+.search-box input:focus {
+    background-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 0 0 2px var(--accent);
+}
+
+.search-box i {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--accent);
+}
+
+.filtros-group {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.dropdown, .btn {
+    padding: 10px 15px;
+    border-radius: 50px;
+    border: none;
+    background-color: var(--primary);
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-weight: 500;
+}
+
+.dropdown {
+    flex-grow: 1;
+    min-width: 200px;
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'%3e%3cpath d='M7 10l5 5 5-5z'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 15px center;
+    background-size: 15px;
+}
+
+.btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background-color: rgba(43, 27, 183, 0.7);
+}
+
+.btn:hover, .dropdown:hover {
+    background-color: var(--primary);
+    transform: translateY(-2px);
+}
+
+.year-slider {
+    margin-top: 1rem;
+    width: 100%;
+}
+
+.year-slider label {
+    display: block;
+    margin-bottom: 8px;
+    color: var(--accent);
+    font-weight: 500;
+}
+
+.slider-container {
+    position: relative;
+    padding: 10px 0;
+}
+
+.slider {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 6px;
+    border-radius: 3px;
+    background: rgba(238, 12, 246, 0.752);
+    outline: none;
+}
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--primary);
+    cursor: pointer;
+    border: 2px solid white;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.toggle-theme {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.theme-toggle {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 30px;
+    background: rgba(205, 11, 11, 0.1);
+    border-radius: 50px;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+.theme-toggle i {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    color: rgb(140, 8, 142);
+    font-size: 14px;
+}
+
+.theme-toggle .fa-sun {
+    left: 8px;
+}
+
+.theme-toggle .fa-moon {
+    right: 8px;
+}
+
+.theme-toggle .ball {
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 24px;
+    height: 24px;
+    background: rgb(7, 222, 233);
+    border-radius: 50%;
+    transition: transform 0.3s ease;
+}
+
+#theme-switch {
+    display: none;
+}
+
+#theme-switch:checked + .theme-toggle .ball {
+    transform: translateX(30px);
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 25px;
+}
+
+.tarjeta {
+    background-color: var(--card-bg);
+    border-radius: 10px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    position: relative;
+}
+
+.tarjeta:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(80, 11, 229, 0.782);
+}
+
+.tarjeta::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: linear-gradient(90deg, var(--primary), var(--accent));
+}
+
+.tarjeta h3 {
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+    color: rgb(53, 204, 121);
+    padding: 20px 20px 0 20px;
+}
+
+.tarjeta p {
+    padding: 0 20px;
+    margin-bottom: 15px;
+    color: #05710b;
+}
+
+.tarjeta p strong {
+    color: var(--accent);
+}
+
+.footer {
+    text-align: center;
+    padding: 2rem 0;
+    margin-top: 3rem;
+    background-color: rgba(30, 39, 46, 0.8);
+    color: #2f85ab;
+    font-size: 0.9rem;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.tarjeta {
+    animation: fadeIn 0.5s ease forwards;
+    opacity: 0;
+}
+
+.tarjeta:nth-child(odd) {
+    animation-delay: 0.1s;
+}
+
+.tarjeta:nth-child(even) {
+    animation-delay: 0.2s;
+}
+
+body.light-mode {
+    --primary: #3c76bd68;
+    --dark: #0727aa;
+    --light: #508290;
+    --accent: #bd3170;
+    --card-bg: #2f4cb93b;
+    background-color: #e5f4f7;
+}
+
+body.light-mode .tarjeta {
+    box-shadow: 0 5px 15px rgba(255, 255, 255, 0.1);
+}
+
+body.light-mode .search-box input,
+body.light-mode .filtros {
+    background-color: rgba(195, 226, 237, 0.9);
+    color: var(--light);
+}
+
+@media (max-width: 768px) {
+    .filtros-group {
+        flex-direction: column;
+    }
+    
+    .dropdown, .btn {
+        width: 100%;
+    }
+    
+    .grid-container {
+        grid-template-columns: 1fr;
+    }
+}
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
